@@ -9,7 +9,7 @@
 
 #include <utils.hpp>
 
-constexpr Vector2f WINDOW_SIZE = { 800, 600 };
+constexpr Vector2f WINDOW_SIZE = { 840, 480 };
 
 SDL_Window   *window   = nullptr;
 SDL_Renderer *renderer = nullptr;
@@ -67,9 +67,9 @@ bool setup() {
         raindrop.position.x = rand() % (int)WINDOW_SIZE.x;
         raindrop.position.y = rand() % (int)WINDOW_SIZE.y;
         raindrop.z_index = ((rand()  % 10) + 1);
-        raindrop.size = raindrop.z_index;
+        raindrop.size = raindrop.z_index * 4;
         raindrop.speed.x = raindrop.z_index / 1.5f;
-        raindrop.speed.y = raindrop.z_index * 2.f;
+        raindrop.speed.y = raindrop.z_index * 2.f + 5;
     }
 
     std::sort(raindrops.begin(), raindrops.end(), [](const Raindrop &a, const Raindrop &b) { return a.z_index < b.z_index; });
