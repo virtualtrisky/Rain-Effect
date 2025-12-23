@@ -63,7 +63,6 @@ bool setup() {
     srand(time(0));
 
     for (auto &raindrop : raindrops) {
-
         raindrop.position.x = rand() % (int)WINDOW_SIZE.x;
         raindrop.position.y = rand() % (int)WINDOW_SIZE.y;
         raindrop.z_index = ((rand()  % 10) + 1);
@@ -94,6 +93,7 @@ void loop() {
             raindrop.position.x += raindrop.speed.x;
             raindrop.position.y += raindrop.speed.y;
 
+            if (raindrop.position.x < 0) raindrop.position.x = WINDOW_SIZE.x;
             if (raindrop.position.x > WINDOW_SIZE.x) raindrop.position.x = -1;
             if (raindrop.position.y > WINDOW_SIZE.y) raindrop.position.y = -raindrop.size;
         }
